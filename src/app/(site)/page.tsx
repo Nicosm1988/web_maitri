@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { ClassPreviewCard } from "@/components/site/class-card";
@@ -33,10 +34,17 @@ export default function HomePage() {
     <>
       <Hero />
 
+      <div className="marquee-band overflow-hidden border-b border-border/70 py-4">
+        <p className="marquee-track whitespace-nowrap font-heading text-2xl italic text-foreground/70">
+          Mover · Respirar · Habitar · Escuchar · Mover · Respirar · Habitar · Escuchar · Mover
+          · Respirar · Habitar · Escuchar ·
+        </p>
+      </div>
+
       <Section
-        eyebrow="La práctica"
-        title="Mover, respirar, observar."
-        description="Maitri propone algo sencillo y profundo: hacer lugar para estar presentes. El cuerpo es el punto de partida; la práctica se extiende a la forma en que habitamos el mundo."
+        eyebrow="La intención"
+        title="Una práctica para habitarte con más presencia."
+        description="Maitri es una invitación a la amistad con la propia experiencia. El cuerpo es el punto de partida; la escucha, una forma de continuar."
       >
         <div className="grid gap-4 md:grid-cols-3">
           {valueProps.map((item) => {
@@ -44,7 +52,7 @@ export default function HomePage() {
             return (
               <article
                 key={item.title}
-                className="rounded-3xl border border-border/70 bg-card/80 p-6 shadow-sm backdrop-blur"
+                className="practice-value rounded-[2rem] border border-border/70 bg-card/70 p-7 shadow-sm"
               >
                 <span className="grid size-11 place-items-center rounded-2xl bg-secondary">
                   <Icon className="size-5 text-primary" aria-hidden="true" />
@@ -56,6 +64,31 @@ export default function HomePage() {
           })}
         </div>
       </Section>
+
+      <section className="relative isolate min-h-[72svh] overflow-hidden">
+        <Image
+          src="/images/maitri-casa-respirada.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="atmosphere-image -z-10 object-cover"
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-foreground/72 via-foreground/20 to-transparent" />
+        <div className="mx-auto flex min-h-[72svh] w-full max-w-6xl items-center px-4 py-20 sm:px-6">
+          <div className="max-w-xl text-background">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-background/70">
+              Casa respirada
+            </p>
+            <h2 className="mt-5 text-balance font-heading text-5xl font-semibold leading-[0.95] sm:text-7xl">
+              No necesitás llegar de una manera especial.
+            </h2>
+            <p className="mt-6 max-w-md text-lg leading-8 text-background/82">
+              Vení como estás. La práctica empieza cuando hacés espacio para sentir lo que ya
+              está acá.
+            </p>
+          </div>
+        </div>
+      </section>
 
       <Section
         className="bg-card/55"
@@ -74,6 +107,34 @@ export default function HomePage() {
         >
           Explorar todas las prácticas
         </Link>
+      </Section>
+
+      <Section
+        eyebrow="Tu primera vez"
+        title="Llegar también es parte de la práctica."
+        description="Si no sabés qué clase elegir, escribinos. Te orientamos según tu experiencia y lo que estés buscando."
+      >
+        <ol className="grid gap-5 md:grid-cols-3">
+          {[
+            ["01", "Contanos", "Escribinos por WhatsApp y contanos si es tu primera vez."],
+            [
+              "02",
+              "Elegimos juntos",
+              "Te ayudamos a encontrar una práctica y un horario posible.",
+            ],
+            [
+              "03",
+              "Vení como estás",
+              "Ropa cómoda, unos minutos de anticipación y curiosidad.",
+            ],
+          ].map(([number, title, body]) => (
+            <li key={number} className="border-t border-primary/35 pt-5">
+              <span className="font-heading text-4xl italic text-primary/55">{number}</span>
+              <h3 className="mt-8 font-heading text-3xl font-semibold">{title}</h3>
+              <p className="mt-3 max-w-sm leading-7 text-muted-foreground">{body}</p>
+            </li>
+          ))}
+        </ol>
       </Section>
 
       <Section>

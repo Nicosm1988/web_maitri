@@ -5,10 +5,10 @@ test("home renderiza con propuesta de valor y CTA", async ({ page }) => {
 
   await expect(page).toHaveTitle(/Maitri Yoga Flow/);
   await expect(
-    page.getByRole("heading", { name: /Un espacio para volver al cuerpo/i }),
+    page.getByRole("heading", { name: /Llegá como estás. Volvé a vos/i }),
   ).toBeVisible();
   await expect(
-    page.getByRole("link", { name: /Conocer las prácticas/i }).first(),
+    page.getByRole("link", { name: /Encontrar mi práctica/i }).first(),
   ).toBeVisible();
   await expect(page.getByRole("link", { name: /WhatsApp/i }).first()).toBeVisible();
 });
@@ -55,6 +55,6 @@ test("home funciona en mobile", async ({ page, isMobile }) => {
   await page.goto("/");
   await expect(page.getByRole("link", { name: /Maitri Yoga Flow/i }).first()).toBeVisible();
   await expect(
-    page.getByRole("heading", { name: /Un espacio para volver al cuerpo/i }),
+    page.getByRole("heading", { name: /Llegá como estás. Volvé a vos/i }),
   ).toBeVisible();
 });
