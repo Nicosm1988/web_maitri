@@ -49,30 +49,30 @@
 }
 
 :root {
-  --background: oklch(0.986 0.012 83);
-  --foreground: oklch(0.236 0.026 126);
-  --card: oklch(0.998 0.006 95);
-  --card-foreground: oklch(0.236 0.026 126);
-  --popover: oklch(0.998 0.006 95);
-  --popover-foreground: oklch(0.236 0.026 126);
-  --primary: oklch(0.39 0.074 141);
-  --primary-foreground: oklch(0.985 0.012 83);
-  --secondary: oklch(0.88 0.045 93);
-  --secondary-foreground: oklch(0.29 0.04 124);
-  --muted: oklch(0.94 0.025 88);
-  --muted-foreground: oklch(0.45 0.032 115);
-  --accent: oklch(0.78 0.071 44);
-  --accent-foreground: oklch(0.22 0.028 105);
+  --background: oklch(0.975 0.018 76);
+  --foreground: oklch(0.3 0.032 48);
+  --card: oklch(0.992 0.012 75);
+  --card-foreground: oklch(0.3 0.032 48);
+  --popover: oklch(0.992 0.012 75);
+  --popover-foreground: oklch(0.3 0.032 48);
+  --primary: oklch(0.54 0.075 42);
+  --primary-foreground: oklch(0.985 0.012 78);
+  --secondary: oklch(0.88 0.052 82);
+  --secondary-foreground: oklch(0.34 0.04 50);
+  --muted: oklch(0.93 0.028 92);
+  --muted-foreground: oklch(0.48 0.035 55);
+  --accent: oklch(0.83 0.056 26);
+  --accent-foreground: oklch(0.3 0.04 39);
   --destructive: oklch(0.56 0.19 27);
-  --border: oklch(0.84 0.033 87);
-  --input: oklch(0.88 0.03 90);
-  --ring: oklch(0.52 0.078 142);
+  --border: oklch(0.83 0.035 72);
+  --input: oklch(0.89 0.03 80);
+  --ring: oklch(0.58 0.075 42);
   --chart-1: oklch(0.5 0.08 141);
   --chart-2: oklch(0.65 0.09 44);
   --chart-3: oklch(0.48 0.065 240);
   --chart-4: oklch(0.58 0.07 300);
   --chart-5: oklch(0.68 0.08 165);
-  --radius: 0.5rem;
+  --radius: 0.85rem;
   --sidebar: oklch(0.964 0.016 88);
   --sidebar-foreground: oklch(0.236 0.026 126);
   --sidebar-primary: oklch(0.39 0.074 141);
@@ -128,6 +128,10 @@
 
   body {
     @apply min-h-screen bg-background text-foreground antialiased;
+    touch-action: manipulation;
+    background-image:
+      radial-gradient(circle at 8% 8%, oklch(0.89 0.055 30 / 28%), transparent 28rem),
+      radial-gradient(circle at 92% 32%, oklch(0.88 0.045 120 / 24%), transparent 32rem);
     text-rendering: optimizeLegibility;
   }
 
@@ -142,5 +146,122 @@
 
   :focus-visible {
     @apply outline-2 outline-offset-2 outline-ring;
+  }
+}
+
+@layer utilities {
+  .hero-atmosphere {
+    background:
+      radial-gradient(circle at 8% 76%, oklch(0.82 0.07 28 / 40%), transparent 30rem),
+      radial-gradient(circle at 92% 12%, oklch(0.86 0.05 120 / 45%), transparent 28rem),
+      var(--background);
+  }
+
+  .hero-line {
+    animation: maitri-rise 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .hero-line:nth-child(2) {
+    animation-delay: 80ms;
+  }
+  .hero-line:nth-child(3) {
+    animation-delay: 160ms;
+  }
+  .hero-line:nth-child(4) {
+    animation-delay: 240ms;
+  }
+  .hero-line:nth-child(5) {
+    animation-delay: 320ms;
+  }
+  .hero-frame {
+    animation: maitri-rise 1000ms 180ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .hero-image {
+    animation: maitri-breathe 14s ease-in-out infinite alternate;
+  }
+  .breath-orbit {
+    animation: maitri-orbit 12s ease-in-out infinite;
+  }
+  .marquee-band {
+    background: color-mix(in oklch, var(--secondary) 58%, var(--background));
+  }
+  .marquee-track {
+    animation: maitri-marquee 28s linear infinite;
+    width: max-content;
+  }
+  .practice-value {
+    transition:
+      transform 240ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 240ms ease,
+      box-shadow 240ms ease;
+  }
+  .practice-value:hover {
+    transform: translateY(-6px);
+    border-color: var(--primary);
+    box-shadow: 0 24px 60px oklch(0.3 0.03 48 / 9%);
+  }
+  .atmosphere-image {
+    transition: transform 1200ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  section:hover > .atmosphere-image {
+    transform: scale(1.02);
+  }
+}
+
+@keyframes maitri-rise {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes maitri-breathe {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.045);
+  }
+}
+
+@keyframes maitri-orbit {
+  0%,
+  100% {
+    transform: scale(0.9);
+    opacity: 0.45;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 0.8;
+  }
+}
+
+@keyframes maitri-marquee {
+  to {
+    transform: translateX(-33.333%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .hero-line,
+  .hero-frame,
+  .hero-image,
+  .breath-orbit,
+  .marquee-track {
+    animation: none;
+  }
+  .practice-value,
+  .atmosphere-image {
+    transition: none;
+  }
+  section:hover > .atmosphere-image,
+  .practice-value:hover {
+    transform: none;
   }
 }

@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Inter } from "next/font/google";
 
-import { siteConfig } from "@/lib/content";
+import { siteConfig } from "@/content/site";
 
 import "./globals.css";
 
@@ -21,11 +21,11 @@ const cormorant = Cormorant_Garamond({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: "Maitri Yoga Flow | Estudio de yoga en Buenos Aires",
+    default: "Maitri Yoga Flow | Yoga y meditación en Recoleta",
     template: "%s | Maitri Yoga Flow",
   },
   description:
-    "Clases de yoga, respiracion y meditacion en Buenos Aires. Un espacio calido para practicar con claridad, presencia y cuidado.",
+    "Centro de yoga y meditación en Recoleta. Kaladanda, Hatha, Hatha Flow y Vinyasa en Paraguay 1560.",
   applicationName: "Maitri Yoga Flow",
   authors: [{ name: "Maitri Yoga Flow" }],
   alternates: {
@@ -36,25 +36,28 @@ export const metadata: Metadata = {
     locale: "es_AR",
     url: siteConfig.url,
     siteName: "Maitri Yoga Flow",
-    title: "Maitri Yoga Flow | Estudio de yoga en Buenos Aires",
+    title: "Maitri Yoga Flow | Yoga y meditación en Recoleta",
     description:
-      "Yoga en Buenos Aires con clases de Hatha, Vinyasa, Yin, principiantes, meditacion y respiracion.",
+      "Centro de yoga y meditación en Recoleta con clases presenciales y una comunidad cercana.",
     images: [
       {
         url: "/images/maitri-yoga-hero.webp",
         width: 1586,
         height: 992,
-        alt: "Clase de yoga en un estudio calido de Buenos Aires",
+        alt: "Práctica de yoga en Maitri Flow, Recoleta",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Maitri Yoga Flow",
-    description:
-      "Estudio de yoga en Buenos Aires con clases para principiantes y practicantes avanzados.",
+    description: "Yoga, meditación y comunidad en Recoleta, Buenos Aires.",
     images: ["/images/maitri-yoga-hero.webp"],
   },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#f8eee1",
 };
 
 export default function RootLayout({

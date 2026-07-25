@@ -2,7 +2,7 @@ import { CalendarDays, Home, UserRound } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
 
-import { siteConfig } from "@/lib/content";
+import { siteConfig } from "@/content/site";
 
 const dashboardNav = [
   { href: "/dashboard", label: "Resumen", icon: Home },

@@ -20,7 +20,7 @@ export function InstructorCard({ name, specialty, bio }: InstructorCardProps) {
           {initials}
         </div>
         <div>
-          <h3 className="font-heading text-2xl font-semibold leading-tight">{name}</h3>
+          <h2 className="font-heading text-2xl font-semibold leading-tight">{name}</h2>
           <p className="mt-1 flex items-center gap-2 text-sm font-medium text-primary">
             <Sparkles className="size-4" aria-hidden="true" />
             {specialty}

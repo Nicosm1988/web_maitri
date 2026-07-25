@@ -15,6 +15,8 @@
 /test-results
 /playwright-report
 /.playwright-mcp
+/.playwright-cli
+/output
 /.lighthouse
 
 # next.js
@@ -44,6 +46,11 @@ yarn-error.log*
 # local tooling and captured external data
 .codex-*.json
 .instagram-*.json
+
+# raw source assets kept locally; optimized selections live in public/images
+/fotos que pueden servir.zip
+/logo.zip
+/nati-d1d8b8.jpg
 
 # typescript
 *.tsbuildinfo

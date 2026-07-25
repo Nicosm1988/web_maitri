@@ -1,6 +1,8 @@
 node_modules
 .next
 .playwright-mcp
+.playwright-cli
+output
 out
 build
 coverage

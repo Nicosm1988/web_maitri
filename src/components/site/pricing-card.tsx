@@ -6,7 +6,7 @@ type PricingCardProps = {
   title: string;
   price: string;
   description: string;
-  features: string[];
+  features: readonly string[];
   highlighted?: boolean;
 };
 
@@ -20,7 +20,7 @@ export function PricingCard({
   return (
     <article
       className={cn(
-        "rounded-md border bg-card p-5 shadow-sm",
+        "rounded-3xl border bg-card/85 p-6 shadow-sm",
         highlighted ? "border-primary shadow-primary/10" : "border-border",
       )}
     >
@@ -29,7 +29,7 @@ export function PricingCard({
           Más elegido
         </p>
       ) : null}
-      <h3 className="font-heading text-2xl font-semibold">{title}</h3>
+      <h2 className="font-heading text-2xl font-semibold">{title}</h2>
       <p className="mt-4 font-heading text-3xl font-semibold">{price}</p>
       <p className="mt-3 text-sm leading-6 text-muted-foreground">{description}</p>
       <ul className="mt-5 grid gap-3 text-sm">

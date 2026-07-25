@@ -1,36 +1,32 @@
 import type { Metadata } from "next";
+import { ArrowUpRight } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
-import { ClassCard } from "@/components/site/class-card";
+import { ClassPreviewCard } from "@/components/site/class-card";
 import { FAQAccordion } from "@/components/site/faq-accordion";
 import { Hero } from "@/components/site/hero";
-import { InstructorCard } from "@/components/site/instructor-card";
-import { PricingCard } from "@/components/site/pricing-card";
-import { SchedulePreview } from "@/components/site/schedule-preview";
 import { Section } from "@/components/site/section";
+import { SchedulePreview } from "@/components/site/schedule-preview";
 import { buttonVariants } from "@/components/ui/button";
-import {
-  classTypes,
-  faqs,
-  instructors,
-  pricingOptions,
-  quickActions,
-  schedulePreview,
-  valueProps,
-} from "@/lib/content";
+import { faqs } from "@/content/faq";
+import { quickActions } from "@/content/navigation";
+import { classTypes, schedulePreview, valueProps } from "@/content/practices";
+import { siteConfig } from "@/content/site";
 import { createPageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Maitri Yoga Flow | Yoga en Buenos Aires",
+  title: "Maitri Yoga Flow | Yoga y meditación en Recoleta",
   description:
-    "Estudio de yoga en Buenos Aires con clases de Hatha, Vinyasa, Yin, yoga para principiantes, meditación y respiración.",
+    "Centro de yoga y meditación en Recoleta. Clases de Kaladanda, Hatha, Hatha Flow y Vinyasa en Paraguay 1560, Buenos Aires.",
   path: "/",
   keywords: [
-    "yoga en Buenos Aires",
-    "clases de yoga en Buenos Aires",
-    "estudio de yoga en CABA",
-    "yoga para principiantes",
+    "yoga en Recoleta",
+    "clases de yoga en Recoleta",
+    "Maitri Flow",
+    "Kaladanda yoga",
+    "meditación en Recoleta",
   ],
 });
 
@@ -39,10 +35,17 @@ export default function HomePage() {
     <>
       <Hero />
 
+      <div className="marquee-band overflow-hidden border-b border-border/70 py-4">
+        <p className="marquee-track whitespace-nowrap font-heading text-2xl italic text-foreground/70">
+          Mover · Respirar · Habitar · Escuchar · Mover · Respirar · Habitar · Escuchar · Mover
+          · Respirar · Habitar · Escuchar ·
+        </p>
+      </div>
+
       <Section
-        eyebrow="Una práctica posible"
-        title="Yoga con técnica, calma y cercanía."
-        description="Maitri combina clases claras, docentes atentos y un recorrido simple para encontrar una práctica que puedas sostener."
+        eyebrow="La intención"
+        title="Una práctica para habitarte con más presencia."
+        description="Maitri es una invitación a la amistad con la propia experiencia. El cuerpo es el punto de partida; la escucha, una forma de continuar."
       >
         <div className="grid gap-4 md:grid-cols-3">
           {valueProps.map((item) => {
@@ -50,10 +53,12 @@ export default function HomePage() {
             return (
               <article
                 key={item.title}
-                className="rounded-md border border-border bg-card p-5 shadow-sm"
+                className="practice-value rounded-[2rem] border border-border/70 bg-card/70 p-7 shadow-sm"
               >
-                <Icon className="size-6 text-primary" aria-hidden="true" />
-                <h3 className="mt-5 font-heading text-2xl font-semibold">{item.title}</h3>
+                <span className="grid size-11 place-items-center rounded-2xl bg-secondary">
+                  <Icon className="size-5 text-primary" aria-hidden="true" />
+                </span>
+                <h3 className="mt-6 font-heading text-2xl font-semibold">{item.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.body}</p>
               </article>
             );
@@ -61,58 +66,162 @@ export default function HomePage() {
         </div>
       </Section>
 
+      <section className="relative isolate min-h-[72svh] overflow-hidden">
+        <Image
+          src="/images/maitri-casa-respirada.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="atmosphere-image -z-10 object-cover"
+        />
+        <div className="absolute inset-0 -z-10 bg-gradient-to-r from-foreground/72 via-foreground/20 to-transparent" />
+        <div className="mx-auto flex min-h-[72svh] w-full max-w-6xl items-center px-4 py-20 sm:px-6">
+          <div className="max-w-xl text-background">
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-background/70">
+              Casa respirada
+            </p>
+            <h2 className="mt-5 text-balance font-heading text-5xl font-semibold leading-[0.95] sm:text-7xl">
+              No necesitás llegar de una manera especial.
+            </h2>
+            <p className="mt-6 max-w-md text-lg leading-8 text-background/82">
+              Vení como estás. La práctica empieza cuando hacés espacio para sentir lo que ya
+              está acá.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <Section
-        className="bg-card"
-        eyebrow="Clases"
-        title="Elegí el ritmo que necesitás hoy."
-        description="Todas las clases tienen descripción, nivel, duración e intensidad para que puedas decidir con claridad."
+        className="bg-card/55"
+        eyebrow="Prácticas"
+        title="Distintos caminos, una misma presencia."
+        description="Estas son las propuestas comunicadas por Maitri. Consultá la grilla actual antes de acercarte."
       >
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {classTypes.slice(0, 3).map((classType) => (
-            <ClassCard key={classType.slug} {...classType} />
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {classTypes.slice(0, 4).map((classType) => (
+            <ClassPreviewCard key={classType.slug} {...classType} />
           ))}
         </div>
         <Link
           href="/clases"
           className={cn(buttonVariants({ variant: "outline", size: "lg" }), "mt-6")}
         >
-          Ver todas las clases
+          Explorar todas las prácticas
         </Link>
       </Section>
 
       <Section
-        eyebrow="Horarios"
-        title="Una grilla simple para empezar."
-        description="Elegí un momento de la semana y escribinos para confirmar disponibilidad. Los cupos se cuidan para sostener una atención cercana."
+        eyebrow="Próximas clases"
+        title="Encontrá un momento para practicar."
+        description="Estas franjas son orientativas. Confirmá estilo, docente y cupo antes de venir."
       >
-        <SchedulePreview days={schedulePreview} />
-      </Section>
-
-      <Section className="bg-muted/45" eyebrow="Docentes" title="Acompañamiento humano.">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {instructors.map((instructor) => (
-            <InstructorCard key={instructor.slug} {...instructor} />
-          ))}
-        </div>
+        <SchedulePreview days={schedulePreview.slice(0, 3)} />
+        <Link
+          href="/horarios"
+          className={cn(buttonVariants({ variant: "outline", size: "lg" }), "mt-6 min-h-11")}
+        >
+          Ver agenda y modalidades
+        </Link>
       </Section>
 
       <Section
-        eyebrow="Precios"
-        title="Opciones para practicar a tu ritmo."
-        description="Clase suelta, packs y membresía mensual para acompañar distintas formas de continuidad."
+        eyebrow="Tu primera vez"
+        title="Llegar también es parte de la práctica."
+        description="Si no sabés qué clase elegir, escribinos. Te orientamos según tu experiencia y lo que estés buscando."
       >
-        <div className="grid gap-4 md:grid-cols-3">
-          {pricingOptions.map((option) => (
-            <PricingCard key={option.title} {...option} />
+        <ol className="grid gap-5 md:grid-cols-3">
+          {[
+            ["01", "Contanos", "Escribinos por WhatsApp y contanos si es tu primera vez."],
+            [
+              "02",
+              "Elegimos juntos",
+              "Te ayudamos a encontrar una práctica y un horario posible.",
+            ],
+            [
+              "03",
+              "Vení como estás",
+              "Ropa cómoda, unos minutos de anticipación y curiosidad.",
+            ],
+          ].map(([number, title, body]) => (
+            <li key={number} className="border-t border-primary/35 pt-5">
+              <span className="font-heading text-4xl italic text-primary/55">{number}</span>
+              <h3 className="mt-8 font-heading text-3xl font-semibold">{title}</h3>
+              <p className="mt-3 max-w-sm leading-7 text-muted-foreground">{body}</p>
+            </li>
+          ))}
+        </ol>
+      </Section>
+
+      <Section
+        className="bg-secondary/25"
+        eyebrow="La vida en Maitri"
+        title="Una práctica real, compartida."
+        description="Imágenes de clases, acompañamientos y momentos de pausa que forman parte del archivo de Maitri."
+      >
+        <div className="grid auto-rows-[220px] gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            ["/images/maitri-practice-group.webp", "Práctica grupal en la sala de Maitri"],
+            ["/images/maitri-class-rest.webp", "Momento de pausa al cierre de una clase"],
+            [
+              "/images/maitri-community.webp",
+              "Practicantes compartiendo una experiencia de yoga",
+            ],
+          ].map(([src, alt], index) => (
+            <div
+              key={src}
+              className={cn(
+                "relative overflow-hidden rounded-[2rem]",
+                index === 0 && "sm:row-span-2 sm:min-h-[456px]",
+              )}
+            >
+              <Image
+                src={src}
+                alt={alt}
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover transition-transform duration-700 hover:scale-[1.03] motion-reduce:transition-none motion-reduce:hover:scale-100"
+              />
+            </div>
           ))}
         </div>
       </Section>
 
-      <Section className="bg-card" eyebrow="Accesos rápidos" title="Tu próximo paso.">
+      <Section>
+        <div className="overflow-hidden rounded-[2rem] bg-foreground px-6 py-10 text-background sm:px-10 lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-12 lg:py-14">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-background/65">
+              Desde la comunidad
+            </p>
+            <h2 className="mt-4 max-w-3xl font-heading text-4xl font-semibold leading-tight sm:text-5xl">
+              La práctica no termina cuando dejamos el mat.
+            </h2>
+            <p className="mt-5 max-w-2xl leading-7 text-background/72">
+              En Instagram, Maitri comparte el recorrido de las clases: filosofía, meditación,
+              respiración y preguntas para llevar la práctica a la vida cotidiana.
+            </p>
+          </div>
+          <a
+            href={siteConfig.instagram}
+            target="_blank"
+            rel="noreferrer"
+            className={cn(
+              buttonVariants({ variant: "secondary", size: "lg" }),
+              "mt-8 gap-2 lg:mt-0",
+            )}
+          >
+            Seguir {siteConfig.instagramHandle}
+            <ArrowUpRight className="size-4" aria-hidden="true" />
+          </a>
+        </div>
+      </Section>
+
+      <Section className="bg-secondary/30" eyebrow="Empezar" title="Tu próximo paso.">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {quickActions.map((action) => {
             const Icon = action.icon;
             const external = action.href.startsWith("http");
+            const classes =
+              "flex min-h-20 items-center gap-3 rounded-2xl border border-border/70 bg-card/80 p-5 transition hover:-translate-y-0.5 hover:border-primary";
             const content = (
               <>
                 <Icon className="size-5 text-primary" aria-hidden="true" />
@@ -121,19 +230,11 @@ export default function HomePage() {
             );
 
             return external ? (
-              <a
-                key={action.label}
-                href={action.href}
-                className="flex min-h-16 items-center gap-3 rounded-md border border-border bg-background p-4 transition hover:border-primary"
-              >
+              <a key={action.label} href={action.href} className={classes}>
                 {content}
               </a>
             ) : (
-              <Link
-                key={action.label}
-                href={action.href}
-                className="flex min-h-16 items-center gap-3 rounded-md border border-border bg-background p-4 transition hover:border-primary"
-              >
+              <Link key={action.label} href={action.href} className={classes}>
                 {content}
               </Link>
             );
@@ -141,7 +242,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section eyebrow="FAQ" title="Preguntas frecuentes">
+      <Section eyebrow="Antes de venir" title="Preguntas frecuentes">
         <FAQAccordion items={faqs.slice(0, 4)} />
       </Section>
     </>

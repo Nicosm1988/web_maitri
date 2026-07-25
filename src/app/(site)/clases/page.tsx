@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 
 import { ClassCard } from "@/components/site/class-card";
-import { Section } from "@/components/site/section";
-import { classTypes } from "@/lib/content";
+import { PageSection } from "@/components/site/page-section";
+import { classTypes } from "@/content/practices";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Clases de yoga en Buenos Aires",
+  title: "Prácticas de yoga en Recoleta",
   description:
-    "Conocé las clases de Hatha, Vinyasa, Yin, Yoga suave para principiantes, meditación y respiración en Maitri Yoga Flow.",
+    "Conocé las prácticas de Kaladanda, Hatha, Hatha Flow, Vinyasa y meditación de Maitri Flow en Recoleta.",
   path: "/clases",
   keywords: [
     "clases de yoga en Buenos Aires",
@@ -20,16 +20,16 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function ClassesPage() {
   return (
-    <Section
+    <PageSection
       eyebrow="Clases"
-      title="Prácticas para distintos momentos."
-      description="Cada propuesta indica nivel, duración e intensidad para que puedas elegir una clase compatible con tu energía y experiencia."
+      title="Distintas formas de entrar a la práctica."
+      description="Maitri integra movimiento, respiración, meditación y filosofía. Escribinos para conocer qué clase se adapta mejor a tu experiencia."
     >
       <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
         {classTypes.map((classType) => (
           <ClassCard key={classType.slug} {...classType} />
         ))}
       </div>
-    </Section>
+    </PageSection>
   );
 }

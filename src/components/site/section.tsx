@@ -30,12 +30,12 @@ export function Section({
               </p>
             ) : null}
             {title ? (
-              <h2 className="font-heading text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
+              <h2 className="text-balance font-heading text-3xl font-semibold leading-tight text-foreground sm:text-4xl">
                 {title}
               </h2>
             ) : null}
             {description ? (
-              <p className="mt-4 text-base leading-7 text-muted-foreground sm:text-lg">
+              <p className="mt-4 text-pretty text-base leading-7 text-muted-foreground sm:text-lg">
                 {description}
               </p>
             ) : null}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import { siteConfig } from "@/lib/content";
+import { siteConfig } from "@/content/site";
 
 type PageMetadataInput = {
   title: string;
@@ -63,9 +63,9 @@ export function localBusinessJsonLd() {
     url: siteConfig.url,
     image: new URL("/images/maitri-yoga-hero.webp", siteConfig.url).toString(),
     description:
-      "Estudio de yoga en Buenos Aires con clases de Hatha, Vinyasa, Yin, yoga para principiantes, meditación y respiración.",
+      "Centro de yoga y meditación en Recoleta con clases de Kaladanda, Hatha, Hatha Flow y Vinyasa.",
     telephone: siteConfig.phoneLabel,
-    email: siteConfig.email,
+    ...(siteConfig.email ? { email: siteConfig.email } : {}),
     address: {
       "@type": "PostalAddress",
       streetAddress: siteConfig.address,
@@ -78,19 +78,13 @@ export function localBusinessJsonLd() {
       latitude: siteConfig.latitude,
       longitude: siteConfig.longitude,
     },
-    areaServed: ["Buenos Aires", "CABA"],
+    areaServed: ["Recoleta", "Buenos Aires", "CABA"],
     openingHoursSpecification: [
       {
         "@type": "OpeningHoursSpecification",
         dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        opens: "08:00",
-        closes: "21:00",
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: "Saturday",
-        opens: "09:00",
-        closes: "13:00",
+        opens: "17:00",
+        closes: "21:30",
       },
     ],
     priceRange: "$$",

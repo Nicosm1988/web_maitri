@@ -1,8 +1,10 @@
-import { LogIn, Menu, UserRound } from "lucide-react";
+import { Menu, MessageCircle } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { buttonVariants } from "@/components/ui/button";
-import { mainNav, siteConfig } from "@/lib/content";
+import { mainNav } from "@/content/navigation";
+import { siteConfig, whatsappUrl } from "@/content/site";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
@@ -13,14 +15,20 @@ export function SiteHeader() {
           href="/"
           className="group flex min-w-0 items-center gap-3 rounded-md focus-visible:outline-ring"
         >
-          <span className="flex size-9 items-center justify-center rounded-md bg-primary text-sm font-semibold text-primary-foreground">
-            M
+          <span className="flex size-11 items-center justify-center overflow-hidden rounded-full bg-card p-1.5">
+            <Image
+              src="/images/maitri-logo.png"
+              alt=""
+              width={40}
+              height={40}
+              className="size-full object-contain"
+            />
           </span>
           <span className="min-w-0">
             <span className="block truncate font-heading text-xl font-semibold leading-none">
               {siteConfig.name}
             </span>
-            <span className="block text-xs text-muted-foreground">Yoga en Buenos Aires</span>
+            <span className="block text-xs text-muted-foreground">Yoga en Recoleta</span>
           </span>
         </Link>
 
@@ -36,18 +44,11 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="hidden items-center gap-2 md:flex">
-          <Link
-            href="/login"
-            className={cn(buttonVariants({ variant: "outline", size: "lg" }), "gap-2")}
-          >
-            <LogIn className="size-4" aria-hidden="true" />
-            Ingresar
-          </Link>
-          <Link href="/dashboard" className={cn(buttonVariants({ size: "lg" }), "gap-2")}>
-            <UserRound className="size-4" aria-hidden="true" />
-            Mi perfil
-          </Link>
+        <div className="hidden items-center md:flex">
+          <a href={whatsappUrl} className={cn(buttonVariants({ size: "lg" }), "gap-2")}>
+            <MessageCircle className="size-4" aria-hidden="true" />
+            Consultar
+          </a>
         </div>
 
         <details className="group relative md:hidden">
@@ -66,18 +67,12 @@ export function SiteHeader() {
                   {item.label}
                 </Link>
               ))}
-              <Link
-                href="/login"
-                className="rounded-md px-3 py-2 text-sm font-medium text-foreground hover:bg-muted focus-visible:outline-ring"
-              >
-                Ingresar
-              </Link>
-              <Link
-                href="/dashboard"
+              <a
+                href={whatsappUrl}
                 className="rounded-md bg-primary px-3 py-2 text-sm font-medium text-primary-foreground focus-visible:outline-ring"
               >
-                Mi perfil
-              </Link>
+                Consultar una clase
+              </a>
             </nav>
           </div>
         </details>
