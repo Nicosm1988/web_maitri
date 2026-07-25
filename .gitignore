@@ -47,6 +47,11 @@ yarn-error.log*
 .codex-*.json
 .instagram-*.json
 
+# raw source assets kept locally; optimized selections live in public/images
+/fotos que pueden servir.zip
+/logo.zip
+/nati-d1d8b8.jpg
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
