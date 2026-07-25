@@ -1,0 +1,10 @@
+node_modules
+.next
+.playwright-mcp
+out
+build
+coverage
+test-results
+package-lock.json
+.codex-v0-maitri-*.json
+.instagram-yogamaitriflow.json
