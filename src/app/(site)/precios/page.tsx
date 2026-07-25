@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 import { PricingCard } from "@/components/site/pricing-card";
-import { Section } from "@/components/site/section";
-import { pricingOptions } from "@/lib/content";
+import { PageSection } from "@/components/site/page-section";
+import { pricingOptions } from "@/content/practices";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -15,16 +15,16 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function PricingPage() {
   return (
-    <Section
+    <PageSection
       eyebrow="Precios"
       title="Elegí cómo querés sostener tu práctica."
-      description="Los valores finales se informan al consultar. La estructura contempla clase suelta, packs y membresía mensual."
+      description="Los valores y modalidades pueden cambiar. Consultá la información vigente directamente con Maitri antes de reservar."
     >
       <div className="grid gap-4 md:grid-cols-3">
         {pricingOptions.map((option) => (
           <PricingCard key={option.title} {...option} />
         ))}
       </div>
-    </Section>
+    </PageSection>
   );
 }

@@ -1,7 +1,8 @@
 import { AtSign, Mail, MapPin, MessageCircle } from "lucide-react";
 import Link from "next/link";
 
-import { mainNav, siteConfig, whatsappUrl } from "@/lib/content";
+import { mainNav } from "@/content/navigation";
+import { siteConfig, whatsappUrl } from "@/content/site";
 
 export function SiteFooter() {
   return (
@@ -10,8 +11,8 @@ export function SiteFooter() {
         <div>
           <p className="font-heading text-2xl font-semibold">{siteConfig.name}</p>
           <p className="mt-4 max-w-sm text-sm leading-6 text-background/75">
-            Un estudio de yoga en Buenos Aires para practicar con presencia, cuidado y
-            continuidad.
+            Yoga, meditación y comunidad en Recoleta. Una práctica para volver al cuerpo y
+            habitar el presente.
           </p>
         </div>
 
@@ -32,19 +33,21 @@ export function SiteFooter() {
             <MessageCircle className="size-4" aria-hidden="true" />
             {siteConfig.phoneLabel}
           </a>
-          <a
-            className="flex items-center gap-2 hover:text-background"
-            href={`mailto:${siteConfig.email}`}
-          >
-            <Mail className="size-4" aria-hidden="true" />
-            {siteConfig.email}
-          </a>
+          {siteConfig.email ? (
+            <a
+              className="flex items-center gap-2 hover:text-background"
+              href={`mailto:${siteConfig.email}`}
+            >
+              <Mail className="size-4" aria-hidden="true" />
+              {siteConfig.email}
+            </a>
+          ) : null}
           <a
             className="flex items-center gap-2 hover:text-background"
             href={siteConfig.instagram}
           >
             <AtSign className="size-4" aria-hidden="true" />
-            Instagram
+            {siteConfig.instagramHandle}
           </a>
           <p className="flex items-start gap-2">
             <MapPin className="mt-0.5 size-4" aria-hidden="true" />
@@ -57,7 +60,7 @@ export function SiteFooter() {
           <p>
             © {new Date().getFullYear()} {siteConfig.name}. Todos los derechos reservados.
           </p>
-          <p>Yoga, respiración y meditación en Buenos Aires.</p>
+          <p>Yoga y meditación en Recoleta, Buenos Aires.</p>
         </div>
       </div>
     </footer>

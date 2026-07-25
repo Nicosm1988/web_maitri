@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
-import { mainNav, siteConfig } from "@/lib/content";
+import { mainNav } from "@/content/navigation";
+import { siteConfig } from "@/content/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();

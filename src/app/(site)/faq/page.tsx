@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 import { FAQAccordion } from "@/components/site/faq-accordion";
-import { Section } from "@/components/site/section";
-import { faqs } from "@/lib/content";
+import { PageSection } from "@/components/site/page-section";
+import { faqs } from "@/content/faq";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -15,12 +15,12 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function FAQPage() {
   return (
-    <Section
+    <PageSection
       eyebrow="FAQ"
       title="Antes de venir a clase."
       description="Preguntas reales para llegar con más claridad y menos ruido."
     >
       <FAQAccordion items={faqs} />
-    </Section>
+    </PageSection>
   );
 }

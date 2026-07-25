@@ -1,30 +1,30 @@
 import type { Metadata } from "next";
 
 import { InstructorCard } from "@/components/site/instructor-card";
-import { Section } from "@/components/site/section";
-import { instructors } from "@/lib/content";
+import { PageSection } from "@/components/site/page-section";
+import { instructors } from "@/content/practices";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Docentes de yoga",
+  title: "Comunidad Maitri",
   description:
-    "Conocé el equipo docente de Maitri Yoga Flow y sus especialidades en Hatha, Vinyasa, Yin y yoga para principiantes.",
+    "Conocé la mirada que reúne yoga, meditación y terapias corporales en Maitri Flow, Recoleta.",
   path: "/docentes",
   keywords: ["docentes de yoga", "estudio de yoga en CABA"],
 });
 
 export default function InstructorsPage() {
   return (
-    <Section
-      eyebrow="Docentes"
-      title="Personas que acompañan personas."
-      description="Cada docente trae una forma de escuchar, guiar y adaptar la práctica para que el encuentro sea claro y cuidado."
+    <PageSection
+      eyebrow="Comunidad"
+      title="Prácticas que se construyen en compañía."
+      description="Maitri reúne docentes y facilitadores alrededor de una mirada integral. Los nombres y horarios vigentes se publican en Instagram."
     >
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-4 md:grid-cols-3">
         {instructors.map((instructor) => (
           <InstructorCard key={instructor.slug} {...instructor} />
         ))}
       </div>
-    </Section>
+    </PageSection>
   );
 }

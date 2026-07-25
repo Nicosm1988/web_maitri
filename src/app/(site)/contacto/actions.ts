@@ -1,5 +1,8 @@
 "use server";
 
+import { redirect } from "next/navigation";
+
+import { siteConfig } from "@/content/site";
 import { contactFormSchema } from "@/lib/validation/contact";
 
 export type ContactFormState = {
@@ -22,7 +25,7 @@ export async function sendContactMessage(
   if (String(formData.get("company") ?? "").trim()) {
     return {
       status: "success",
-      message: "Gracias por escribirnos. Te vamos a responder pronto.",
+      message: "Consulta recibida.",
     };
   }
 
@@ -43,9 +46,22 @@ export async function sendContactMessage(
     };
   }
 
-  return {
-    status: "success",
-    message:
-      "Gracias por escribirnos. Te vamos a responder por email o WhatsApp si lo compartiste en el mensaje.",
+  const interestLabels: Record<string, string> = {
+    "primera-clase": "primera clase",
+    horarios: "horarios",
+    precios: "aranceles",
+    membresias: "práctica regular",
+    otro: "otra consulta",
   };
+  const lines = [
+    `Hola Maitri, soy ${parsed.data.name}.`,
+    `Quisiera consultar por ${interestLabels[parsed.data.interest] ?? "una clase"}.`,
+    parsed.data.message,
+    parsed.data.email ? `Email: ${parsed.data.email}` : "",
+    parsed.data.phone ? `Teléfono: ${parsed.data.phone}` : "",
+  ].filter(Boolean);
+
+  redirect(
+    `https://wa.me/${siteConfig.phoneDigits}?text=${encodeURIComponent(lines.join("\n\n"))}`,
+  );
 }

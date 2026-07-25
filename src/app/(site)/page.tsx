@@ -1,36 +1,30 @@
 import type { Metadata } from "next";
+import { ArrowUpRight } from "lucide-react";
 import Link from "next/link";
 
-import { ClassCard } from "@/components/site/class-card";
+import { ClassPreviewCard } from "@/components/site/class-card";
 import { FAQAccordion } from "@/components/site/faq-accordion";
 import { Hero } from "@/components/site/hero";
-import { InstructorCard } from "@/components/site/instructor-card";
-import { PricingCard } from "@/components/site/pricing-card";
-import { SchedulePreview } from "@/components/site/schedule-preview";
 import { Section } from "@/components/site/section";
 import { buttonVariants } from "@/components/ui/button";
-import {
-  classTypes,
-  faqs,
-  instructors,
-  pricingOptions,
-  quickActions,
-  schedulePreview,
-  valueProps,
-} from "@/lib/content";
+import { faqs } from "@/content/faq";
+import { quickActions } from "@/content/navigation";
+import { classTypes, valueProps } from "@/content/practices";
+import { siteConfig } from "@/content/site";
 import { createPageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Maitri Yoga Flow | Yoga en Buenos Aires",
+  title: "Maitri Yoga Flow | Yoga y meditación en Recoleta",
   description:
-    "Estudio de yoga en Buenos Aires con clases de Hatha, Vinyasa, Yin, yoga para principiantes, meditación y respiración.",
+    "Centro de yoga y meditación en Recoleta. Clases de Kaladanda, Hatha, Hatha Flow y Vinyasa en Paraguay 1560, Buenos Aires.",
   path: "/",
   keywords: [
-    "yoga en Buenos Aires",
-    "clases de yoga en Buenos Aires",
-    "estudio de yoga en CABA",
-    "yoga para principiantes",
+    "yoga en Recoleta",
+    "clases de yoga en Recoleta",
+    "Maitri Flow",
+    "Kaladanda yoga",
+    "meditación en Recoleta",
   ],
 });
 
@@ -40,9 +34,9 @@ export default function HomePage() {
       <Hero />
 
       <Section
-        eyebrow="Una práctica posible"
-        title="Yoga con técnica, calma y cercanía."
-        description="Maitri combina clases claras, docentes atentos y un recorrido simple para encontrar una práctica que puedas sostener."
+        eyebrow="La práctica"
+        title="Mover, respirar, observar."
+        description="Maitri propone algo sencillo y profundo: hacer lugar para estar presentes. El cuerpo es el punto de partida; la práctica se extiende a la forma en que habitamos el mundo."
       >
         <div className="grid gap-4 md:grid-cols-3">
           {valueProps.map((item) => {
@@ -50,10 +44,12 @@ export default function HomePage() {
             return (
               <article
                 key={item.title}
-                className="rounded-md border border-border bg-card p-5 shadow-sm"
+                className="rounded-3xl border border-border/70 bg-card/80 p-6 shadow-sm backdrop-blur"
               >
-                <Icon className="size-6 text-primary" aria-hidden="true" />
-                <h3 className="mt-5 font-heading text-2xl font-semibold">{item.title}</h3>
+                <span className="grid size-11 place-items-center rounded-2xl bg-secondary">
+                  <Icon className="size-5 text-primary" aria-hidden="true" />
+                </span>
+                <h3 className="mt-6 font-heading text-2xl font-semibold">{item.title}</h3>
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.body}</p>
               </article>
             );
@@ -62,57 +58,60 @@ export default function HomePage() {
       </Section>
 
       <Section
-        className="bg-card"
-        eyebrow="Clases"
-        title="Elegí el ritmo que necesitás hoy."
-        description="Todas las clases tienen descripción, nivel, duración e intensidad para que puedas decidir con claridad."
+        className="bg-card/55"
+        eyebrow="Prácticas"
+        title="Distintos caminos, una misma presencia."
+        description="Estas son las propuestas comunicadas por Maitri. Consultá la grilla actual antes de acercarte."
       >
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-          {classTypes.slice(0, 3).map((classType) => (
-            <ClassCard key={classType.slug} {...classType} />
+        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+          {classTypes.slice(0, 4).map((classType) => (
+            <ClassPreviewCard key={classType.slug} {...classType} />
           ))}
         </div>
         <Link
           href="/clases"
           className={cn(buttonVariants({ variant: "outline", size: "lg" }), "mt-6")}
         >
-          Ver todas las clases
+          Explorar todas las prácticas
         </Link>
       </Section>
 
-      <Section
-        eyebrow="Horarios"
-        title="Una grilla simple para empezar."
-        description="Elegí un momento de la semana y escribinos para confirmar disponibilidad. Los cupos se cuidan para sostener una atención cercana."
-      >
-        <SchedulePreview days={schedulePreview} />
-      </Section>
-
-      <Section className="bg-muted/45" eyebrow="Docentes" title="Acompañamiento humano.">
-        <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-          {instructors.map((instructor) => (
-            <InstructorCard key={instructor.slug} {...instructor} />
-          ))}
+      <Section>
+        <div className="overflow-hidden rounded-[2rem] bg-foreground px-6 py-10 text-background sm:px-10 lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-12 lg:py-14">
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.2em] text-background/65">
+              Desde la comunidad
+            </p>
+            <h2 className="mt-4 max-w-3xl font-heading text-4xl font-semibold leading-tight sm:text-5xl">
+              La práctica no termina cuando dejamos el mat.
+            </h2>
+            <p className="mt-5 max-w-2xl leading-7 text-background/72">
+              En Instagram, Maitri comparte el recorrido de las clases: filosofía, meditación,
+              respiración y preguntas para llevar la práctica a la vida cotidiana.
+            </p>
+          </div>
+          <a
+            href={siteConfig.instagram}
+            target="_blank"
+            rel="noreferrer"
+            className={cn(
+              buttonVariants({ variant: "secondary", size: "lg" }),
+              "mt-8 gap-2 lg:mt-0",
+            )}
+          >
+            Seguir {siteConfig.instagramHandle}
+            <ArrowUpRight className="size-4" aria-hidden="true" />
+          </a>
         </div>
       </Section>
 
-      <Section
-        eyebrow="Precios"
-        title="Opciones para practicar a tu ritmo."
-        description="Clase suelta, packs y membresía mensual para acompañar distintas formas de continuidad."
-      >
-        <div className="grid gap-4 md:grid-cols-3">
-          {pricingOptions.map((option) => (
-            <PricingCard key={option.title} {...option} />
-          ))}
-        </div>
-      </Section>
-
-      <Section className="bg-card" eyebrow="Accesos rápidos" title="Tu próximo paso.">
+      <Section className="bg-secondary/30" eyebrow="Empezar" title="Tu próximo paso.">
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {quickActions.map((action) => {
             const Icon = action.icon;
             const external = action.href.startsWith("http");
+            const classes =
+              "flex min-h-20 items-center gap-3 rounded-2xl border border-border/70 bg-card/80 p-5 transition hover:-translate-y-0.5 hover:border-primary";
             const content = (
               <>
                 <Icon className="size-5 text-primary" aria-hidden="true" />
@@ -121,19 +120,11 @@ export default function HomePage() {
             );
 
             return external ? (
-              <a
-                key={action.label}
-                href={action.href}
-                className="flex min-h-16 items-center gap-3 rounded-md border border-border bg-background p-4 transition hover:border-primary"
-              >
+              <a key={action.label} href={action.href} className={classes}>
                 {content}
               </a>
             ) : (
-              <Link
-                key={action.label}
-                href={action.href}
-                className="flex min-h-16 items-center gap-3 rounded-md border border-border bg-background p-4 transition hover:border-primary"
-              >
+              <Link key={action.label} href={action.href} className={classes}>
                 {content}
               </Link>
             );
@@ -141,7 +132,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section eyebrow="FAQ" title="Preguntas frecuentes">
+      <Section eyebrow="Antes de venir" title="Preguntas frecuentes">
         <FAQAccordion items={faqs.slice(0, 4)} />
       </Section>
     </>

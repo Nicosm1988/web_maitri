@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { AtSign, Mail, MapPin, MessageCircle } from "lucide-react";
 
 import { ContactForm } from "@/components/site/contact-form";
-import { Section } from "@/components/site/section";
-import { siteConfig, whatsappUrl } from "@/lib/content";
+import { PageSection } from "@/components/site/page-section";
+import { siteConfig, whatsappUrl } from "@/content/site";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
@@ -16,7 +16,7 @@ export const metadata: Metadata = createPageMetadata({
 
 export default function ContactPage() {
   return (
-    <Section
+    <PageSection
       eyebrow="Contacto"
       title="Escribinos y encontramos tu primera práctica."
       description="Podés consultar por horarios, estilos, nivel o cualquier detalle antes de venir."
@@ -30,19 +30,21 @@ export default function ContactPage() {
             <MessageCircle className="size-5 text-primary" aria-hidden="true" />
             <span>{siteConfig.phoneLabel}</span>
           </a>
-          <a
-            className="flex items-center gap-3 rounded-md border border-border bg-card p-4 hover:border-primary"
-            href={`mailto:${siteConfig.email}`}
-          >
-            <Mail className="size-5 text-primary" aria-hidden="true" />
-            <span>{siteConfig.email}</span>
-          </a>
+          {siteConfig.email ? (
+            <a
+              className="flex items-center gap-3 rounded-md border border-border bg-card p-4 hover:border-primary"
+              href={`mailto:${siteConfig.email}`}
+            >
+              <Mail className="size-5 text-primary" aria-hidden="true" />
+              <span>{siteConfig.email}</span>
+            </a>
+          ) : null}
           <a
             className="flex items-center gap-3 rounded-md border border-border bg-card p-4 hover:border-primary"
             href={siteConfig.instagram}
           >
             <AtSign className="size-5 text-primary" aria-hidden="true" />
-            <span>Instagram</span>
+            <span>{siteConfig.instagramHandle}</span>
           </a>
           <div className="flex items-start gap-3 rounded-md border border-border bg-card p-4">
             <MapPin className="mt-0.5 size-5 text-primary" aria-hidden="true" />
@@ -56,6 +58,6 @@ export default function ContactPage() {
           <ContactForm />
         </div>
       </div>
-    </Section>
+    </PageSection>
   );
 }

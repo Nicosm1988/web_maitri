@@ -3,13 +3,13 @@ type FAQ = {
   answer: string;
 };
 
-export function FAQAccordion({ items }: { items: FAQ[] }) {
+export function FAQAccordion({ items }: { items: readonly FAQ[] }) {
   return (
     <div className="grid gap-3">
       {items.map((item) => (
         <details
           key={item.question}
-          className="group rounded-md border border-border bg-card p-5 open:shadow-sm"
+          className="group rounded-2xl border border-border/70 bg-card/80 p-5 open:shadow-sm"
         >
           <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold marker:hidden">
             <span>{item.question}</span>

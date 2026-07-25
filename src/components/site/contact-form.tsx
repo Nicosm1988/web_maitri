@@ -27,7 +27,7 @@ export function ContactForm() {
           name="name"
           type="text"
           autoComplete="name"
-          className="min-h-11 rounded-md border border-input bg-background px-3 py-2 text-base outline-none transition focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/35"
+          className="min-h-11 rounded-md border border-input bg-background px-3 py-2 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/35"
           aria-describedby={state.errors?.name ? "name-error" : undefined}
           aria-invalid={Boolean(state.errors?.name)}
         />
@@ -47,7 +47,8 @@ export function ContactForm() {
           name="email"
           type="email"
           autoComplete="email"
-          className="min-h-11 rounded-md border border-input bg-background px-3 py-2 text-base outline-none transition focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/35"
+          spellCheck={false}
+          className="min-h-11 rounded-md border border-input bg-background px-3 py-2 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/35"
           aria-describedby={state.errors?.email ? "email-error" : undefined}
           aria-invalid={Boolean(state.errors?.email)}
         />
@@ -68,7 +69,7 @@ export function ContactForm() {
           type="tel"
           autoComplete="tel"
           inputMode="tel"
-          className="min-h-11 rounded-md border border-input bg-background px-3 py-2 text-base outline-none transition focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/35"
+          className="min-h-11 rounded-md border border-input bg-background px-3 py-2 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/35"
           aria-describedby={state.errors?.phone ? "phone-error" : undefined}
           aria-invalid={Boolean(state.errors?.phone)}
         />
@@ -87,7 +88,8 @@ export function ContactForm() {
           id="interest"
           name="interest"
           defaultValue="primera-clase"
-          className="min-h-11 rounded-md border border-input bg-background px-3 py-2 text-base outline-none transition focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/35"
+          autoComplete="off"
+          className="min-h-11 rounded-md border border-input bg-background px-3 py-2 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/35"
           aria-describedby={state.errors?.interest ? "interest-error" : undefined}
           aria-invalid={Boolean(state.errors?.interest)}
         >
@@ -112,7 +114,8 @@ export function ContactForm() {
           id="message"
           name="message"
           rows={5}
-          className="min-h-32 rounded-md border border-input bg-background px-3 py-2 text-base outline-none transition focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/35"
+          autoComplete="off"
+          className="min-h-32 rounded-md border border-input bg-background px-3 py-2 text-base outline-none transition-colors focus-visible:border-ring focus-visible:ring-3 focus-visible:ring-ring/35"
           aria-describedby={state.errors?.message ? "message-error" : undefined}
           aria-invalid={Boolean(state.errors?.message)}
         />
@@ -136,13 +139,14 @@ export function ContactForm() {
               : "rounded-md bg-destructive/10 p-3 text-sm text-destructive"
           }
           role="status"
+          aria-live="polite"
         >
           {state.message}
         </p>
       ) : null}
 
       <Button type="submit" size="lg" className="h-12" disabled={pending}>
-        {pending ? "Enviando..." : "Enviar consulta"}
+        {pending ? "Abriendo WhatsApp…" : "Continuar en WhatsApp"}
       </Button>
     </form>
   );

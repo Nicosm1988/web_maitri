@@ -6,21 +6,21 @@ import { cn } from "@/lib/utils";
 
 type ScheduleDay = {
   day: string;
-  items: {
+  items: readonly {
     time: string;
     className: string;
-    teacher: string;
+    teacher?: string;
   }[];
 };
 
-export function SchedulePreview({ days }: { days: ScheduleDay[] }) {
+export function SchedulePreview({ days }: { days: readonly ScheduleDay[] }) {
   return (
     <div className="overflow-hidden rounded-md border border-border bg-card shadow-sm">
       <div className="flex flex-col gap-3 border-b border-border p-5 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h3 className="font-heading text-2xl font-semibold">Grilla inicial</h3>
+          <h2 className="font-heading text-2xl font-semibold">Franjas publicadas</h2>
           <p className="mt-1 text-sm text-muted-foreground">
-            Horarios de referencia. Escribinos para confirmar cupo antes de venir.
+            La actividad puede variar. Confirmá estilo, docente y cupo antes de venir.
           </p>
         </div>
         <Link
@@ -37,15 +37,17 @@ export function SchedulePreview({ days }: { days: ScheduleDay[] }) {
             key={day.day}
             className="border-b border-border p-4 md:border-b-0 md:border-r"
           >
-            <h4 className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">
+            <h3 className="text-sm font-semibold uppercase tracking-[0.14em] text-primary">
               {day.day}
-            </h4>
+            </h3>
             <div className="mt-4 grid gap-3">
               {day.items.map((item) => (
                 <article key={`${day.day}-${item.time}`} className="rounded-md bg-muted p-3">
                   <p className="font-semibold text-foreground">{item.time}</p>
                   <p className="mt-1 text-sm text-muted-foreground">{item.className}</p>
-                  <p className="text-xs text-muted-foreground">Docente: {item.teacher}</p>
+                  {item.teacher ? (
+                    <p className="text-xs text-muted-foreground">Docente: {item.teacher}</p>
+                  ) : null}
                 </article>
               ))}
             </div>
