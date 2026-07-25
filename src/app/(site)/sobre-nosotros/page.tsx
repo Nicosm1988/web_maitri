@@ -20,8 +20,8 @@ export default function AboutPage() {
       <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
         <div className="relative min-h-[440px] overflow-hidden rounded-[2rem_2rem_7rem_2rem]">
           <Image
-            src="/images/maitri-yoga-hero.webp"
-            alt="Práctica compartida en un espacio cálido"
+            src="/images/maitri-guidance.webp"
+            alt="Acompañamiento atento durante una práctica de yoga"
             fill
             sizes="(min-width: 1024px) 50vw, 100vw"
             className="object-cover"

@@ -152,6 +152,40 @@ export default function HomePage() {
         </ol>
       </Section>
 
+      <Section
+        className="bg-secondary/25"
+        eyebrow="La vida en Maitri"
+        title="Una práctica real, compartida."
+        description="Imágenes de clases, acompañamientos y momentos de pausa que forman parte del archivo de Maitri."
+      >
+        <div className="grid auto-rows-[220px] gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {[
+            ["/images/maitri-practice-group.webp", "Práctica grupal en la sala de Maitri"],
+            ["/images/maitri-class-rest.webp", "Momento de pausa al cierre de una clase"],
+            [
+              "/images/maitri-community.webp",
+              "Practicantes compartiendo una experiencia de yoga",
+            ],
+          ].map(([src, alt], index) => (
+            <div
+              key={src}
+              className={cn(
+                "relative overflow-hidden rounded-[2rem]",
+                index === 0 && "sm:row-span-2 sm:min-h-[456px]",
+              )}
+            >
+              <Image
+                src={src}
+                alt={alt}
+                fill
+                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                className="object-cover transition-transform duration-700 hover:scale-[1.03] motion-reduce:transition-none motion-reduce:hover:scale-100"
+              />
+            </div>
+          ))}
+        </div>
+      </Section>
+
       <Section>
         <div className="overflow-hidden rounded-[2rem] bg-foreground px-6 py-10 text-background sm:px-10 lg:grid lg:grid-cols-[1.2fr_0.8fr] lg:items-end lg:gap-12 lg:py-14">
           <div>

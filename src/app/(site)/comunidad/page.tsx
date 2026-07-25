@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Heart, Mail, Users } from "lucide-react";
+import Image from "next/image";
 
 import { PageSection } from "@/components/site/page-section";
 import { buttonVariants } from "@/components/ui/button";
@@ -20,6 +21,19 @@ export default function CommunityPage() {
       title="La práctica se sostiene en compañía."
       description="Un espacio para enterarte de clases, encuentros, nuevas lecturas y formas de colaborar con Maitri."
     >
+      <div className="relative mb-8 min-h-[420px] overflow-hidden rounded-[2rem_2rem_7rem_2rem]">
+        <Image
+          src="/images/maitri-community.webp"
+          alt="Grupo de practicantes compartiendo una experiencia de yoga"
+          fill
+          sizes="(min-width: 1152px) 1152px, 100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 via-transparent to-transparent" />
+        <p className="absolute bottom-0 max-w-xl p-7 font-heading text-3xl italic text-background sm:p-10 sm:text-4xl">
+          Practicar juntos también es aprender a cuidarnos.
+        </p>
+      </div>
       <div className="grid gap-5 lg:grid-cols-2">
         <section className="rounded-[2rem] bg-foreground p-8 text-background sm:p-10">
           <Mail className="size-7 text-secondary" aria-hidden="true" />

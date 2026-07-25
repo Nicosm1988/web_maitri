@@ -1,4 +1,5 @@
 import { Menu, MessageCircle } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { buttonVariants } from "@/components/ui/button";
@@ -14,8 +15,14 @@ export function SiteHeader() {
           href="/"
           className="group flex min-w-0 items-center gap-3 rounded-md focus-visible:outline-ring"
         >
-          <span className="flex size-10 items-center justify-center rounded-full bg-primary font-heading text-lg font-semibold text-primary-foreground">
-            M
+          <span className="flex size-11 items-center justify-center overflow-hidden rounded-full bg-card p-1.5">
+            <Image
+              src="/images/maitri-logo.png"
+              alt=""
+              width={40}
+              height={40}
+              className="size-full object-contain"
+            />
           </span>
           <span className="min-w-0">
             <span className="block truncate font-heading text-xl font-semibold leading-none">

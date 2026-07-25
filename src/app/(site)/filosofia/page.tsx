@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowRight, BookOpen, CircleDot, Footprints } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 import { PageSection } from "@/components/site/page-section";
@@ -19,6 +20,20 @@ export default function PhilosophyPage() {
       title="La práctica también continúa fuera del mat."
       description="Una biblioteca viva para acercarnos a la meditación y a enseñanzas budistas con respeto, contexto y curiosidad."
     >
+      <div className="mb-10 grid overflow-hidden rounded-[2rem] bg-secondary/35 md:grid-cols-[0.8fr_1.2fr]">
+        <div className="relative min-h-80">
+          <Image
+            src="/images/maitri-dharma-art.webp"
+            alt="Ilustración artística de una postura de yoga"
+            fill
+            sizes="(min-width: 768px) 40vw, 100vw"
+            className="object-cover"
+          />
+        </div>
+        <blockquote className="flex items-center p-8 font-heading text-4xl italic leading-tight text-primary sm:p-12 sm:text-5xl">
+          Estudiar para mirar más profundo. Practicar para volverlo experiencia.
+        </blockquote>
+      </div>
       <div className="mb-14 grid gap-4 md:grid-cols-3">
         {[
           [

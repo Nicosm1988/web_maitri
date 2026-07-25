@@ -52,8 +52,8 @@ export function Hero() {
 
         <div className="hero-frame relative min-h-[390px] overflow-hidden rounded-[2.5rem_2.5rem_8rem_2.5rem] border border-background/60 bg-card shadow-2xl shadow-primary/15 lg:min-h-[590px]">
           <Image
-            src="/images/maitri-yoga-hero.webp"
-            alt="Clase de yoga en un estudio cálido de Buenos Aires"
+            src="/images/maitri-class-rest.webp"
+            alt="Clase grupal de yoga en el espacio Maitri de Buenos Aires"
             fill
             priority
             sizes="(min-width: 1280px) 608px, (min-width: 1024px) 50vw, calc(100vw - 32px)"

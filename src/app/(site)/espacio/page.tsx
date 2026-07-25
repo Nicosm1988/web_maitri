@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { ArrowUpRight, MapPin, TrainFront } from "lucide-react";
+import Image from "next/image";
 
 import { PageSection } from "@/components/site/page-section";
 import { buttonVariants } from "@/components/ui/button";
@@ -41,10 +42,17 @@ export default function SpacePage() {
             <ArrowUpRight className="size-4" aria-hidden="true" />
           </a>
         </div>
-        <div className="grid min-h-80 place-items-center rounded-[2rem] border border-border/70 bg-secondary/45 p-6 text-center">
-          <div>
+        <div className="relative min-h-80 overflow-hidden rounded-[2rem] border border-border/70 bg-secondary/45">
+          <Image
+            src="/images/maitri-space.webp"
+            alt="Sala de práctica de Maitri preparada con mats y elementos"
+            fill
+            sizes="(min-width: 1024px) 55vw, 100vw"
+            className="object-cover"
+          />
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-foreground/80 to-transparent p-6 pt-20 text-background">
             <p className="font-heading text-3xl font-semibold">Antes de venir</p>
-            <p className="mx-auto mt-3 max-w-md text-sm leading-6 text-muted-foreground">
+            <p className="mt-3 max-w-md text-sm leading-6 text-background/80">
               Escribinos para confirmar la clase, el acceso al espacio y cualquier elemento que
               necesites para practicar.
             </p>
