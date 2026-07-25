@@ -26,6 +26,24 @@ export function SiteFooter() {
               {item.label}
             </Link>
           ))}
+          <Link
+            href="/precios"
+            className="rounded-md py-1 text-background/75 hover:text-background"
+          >
+            Precios conscientes
+          </Link>
+          <Link
+            href="/karma-yoga"
+            className="rounded-md py-1 text-background/75 hover:text-background"
+          >
+            Karma Yoga
+          </Link>
+          <Link
+            href="/faq"
+            className="rounded-md py-1 text-background/75 hover:text-background"
+          >
+            Preguntas frecuentes
+          </Link>
         </nav>
 
         <div className="grid gap-3 text-sm text-background/80">

@@ -17,7 +17,7 @@ test("la navegación principal abre clases", async ({ page, isMobile }) => {
   test.skip(isMobile, "La navegación mobile usa menú nativo.");
 
   await page.goto("/");
-  await page.getByRole("link", { name: "Prácticas" }).first().click();
+  await page.getByRole("link", { name: "Clases" }).first().click();
 
   await expect(page).toHaveURL(/\/clases$/);
   await expect(

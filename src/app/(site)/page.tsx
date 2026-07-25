@@ -7,10 +7,11 @@ import { ClassPreviewCard } from "@/components/site/class-card";
 import { FAQAccordion } from "@/components/site/faq-accordion";
 import { Hero } from "@/components/site/hero";
 import { Section } from "@/components/site/section";
+import { SchedulePreview } from "@/components/site/schedule-preview";
 import { buttonVariants } from "@/components/ui/button";
 import { faqs } from "@/content/faq";
 import { quickActions } from "@/content/navigation";
-import { classTypes, valueProps } from "@/content/practices";
+import { classTypes, schedulePreview, valueProps } from "@/content/practices";
 import { siteConfig } from "@/content/site";
 import { createPageMetadata } from "@/lib/seo";
 import { cn } from "@/lib/utils";
@@ -106,6 +107,20 @@ export default function HomePage() {
           className={cn(buttonVariants({ variant: "outline", size: "lg" }), "mt-6")}
         >
           Explorar todas las prácticas
+        </Link>
+      </Section>
+
+      <Section
+        eyebrow="Próximas clases"
+        title="Encontrá un momento para practicar."
+        description="Estas franjas son orientativas. Confirmá estilo, docente y cupo antes de venir."
+      >
+        <SchedulePreview days={schedulePreview.slice(0, 3)} />
+        <Link
+          href="/horarios"
+          className={cn(buttonVariants({ variant: "outline", size: "lg" }), "mt-6 min-h-11")}
+        >
+          Ver agenda y modalidades
         </Link>
       </Section>
 

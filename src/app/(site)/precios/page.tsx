@@ -6,18 +6,17 @@ import { pricingOptions } from "@/content/practices";
 import { createPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createPageMetadata({
-  title: "Precios y membresías",
-  description:
-    "Opciones de clase suelta, packs y membresía mensual para practicar yoga en Maitri Yoga Flow.",
+  title: "Precios conscientes",
+  description: "Consultá las modalidades vigentes para practicar yoga en Maitri Yoga Flow.",
   path: "/precios",
-  keywords: ["precios yoga Buenos Aires", "membresía yoga", "packs de clases de yoga"],
+  keywords: ["precios yoga Buenos Aires", "yoga en Recoleta", "consultar clases de yoga"],
 });
 
 export default function PricingPage() {
   return (
     <PageSection
       eyebrow="Precios"
-      title="Elegí cómo querés sostener tu práctica."
+      title="Una conversación clara sobre cómo sostener la práctica."
       description="Los valores y modalidades pueden cambiar. Consultá la información vigente directamente con Maitri antes de reservar."
     >
       <div className="grid gap-4 md:grid-cols-3">

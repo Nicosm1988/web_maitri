@@ -1,4 +1,5 @@
 import { Clock, Gauge, GraduationCap } from "lucide-react";
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 type ClassCardProps = {
@@ -17,7 +18,7 @@ function ClassCardBody({
   title,
 }: ClassCardProps & { title: ReactNode }) {
   return (
-    <article className="rounded-md border border-border bg-card p-5 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md motion-reduce:hover:translate-y-0">
+    <article className="flex h-full flex-col rounded-[1.5rem] border border-border bg-card p-5 shadow-sm transition-[transform,box-shadow,border-color] hover:-translate-y-0.5 hover:border-primary/60 hover:shadow-md motion-reduce:transition-none motion-reduce:hover:translate-y-0">
       {title}
       <p className="mt-3 min-h-24 text-sm leading-6 text-muted-foreground">{description}</p>
       <dl className="mt-5 grid gap-2 text-sm text-foreground">
@@ -37,6 +38,12 @@ function ClassCardBody({
           <dd>{intensity}</dd>
         </div>
       </dl>
+      <Link
+        href="/contacto"
+        className="mt-6 inline-flex min-h-11 items-center justify-center rounded-lg bg-primary px-4 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/85"
+      >
+        Reservar clase
+      </Link>
     </article>
   );
 }
